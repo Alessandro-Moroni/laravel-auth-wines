@@ -3,11 +3,20 @@
 @section('content')
     <h1 class="text-center my-5">Wines</h1>
 
+
+
     @if (session('deleted'))
         <div class="alert alert-success" role="alert">
             {{ session('deleted') }}
         </div>
     @endif
+
+    <div class="container">
+        <form action="{{route('admin.wines.index')}}" method="GET" class="d-flex" role="search">
+            <input class="form-control me-2" type="search" name="toSearch" placeholder="Search Wines" aria-label="Search">
+            <button class="btn btn-success" type="search">Search</button>
+        </form>
+    </div>
 
     <div class="container">
         <div class="row row-cols-3">
@@ -45,7 +54,11 @@
             @endforeach
         </div>
     </div>
+    @if ($search == 0)
+
     <div class="container">
         {{ $wines->links('pagination::bootstrap-5') }}
     </div>
+    @endif
+
 @endsection
