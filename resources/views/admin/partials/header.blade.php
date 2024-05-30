@@ -8,13 +8,13 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="{{ route('admin.home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">List Wines</a>
+                        <a class="nav-link" href="{{ route('admin.wines.index') }}">List Wines</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">New wine</a>
+                        <a class="nav-link" href="{{ route('admin.wines.create') }}">New wine</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">List Winery</a>
