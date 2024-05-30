@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Wine;
-use Illuminate\Support\Str;
+use App\Functions\Helper;
 
 class WineTableSeeder extends Seeder
 {
@@ -14,7 +14,13 @@ class WineTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $data_str = file_get_contents('https://api.sampleapis.com/wines/reds');
+        $options = [
+            "ssl" => [
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ],
+        ];
+        $data_str = file_get_contents('https://api.sampleapis.com/wines/reds', false, stream_context_create($options));
         $data = json_decode($data_str);
 
         foreach ($data as $wine) {
@@ -22,7 +28,7 @@ class WineTableSeeder extends Seeder
             $new_wine = new Wine();
             $new_wine->winery = $wine->winery;
             $new_wine->name = $wine->wine;
-            $new_wine->slug = $this->generateSlug($new_wine->name);
+            $new_wine->slug = Helper::generateSlug($new_wine->name, Wine::class);
             $new_wine->rating_average = $wine->rating->average;
             $new_wine->rating_reviews = $wine->rating->reviews;
             $new_wine->location = $wine->location;
@@ -32,19 +38,4 @@ class WineTableSeeder extends Seeder
         }
     }
 
-    private function generateSlug($sring)
-    {
-        $slug = Str::slug($sring, '-');
-        $original_slug = $slug;
-
-        $exist = Wine::where('slug', $slug)->first();
-        $counter = 1;
-
-        while ($exist) {
-            $slug = $original_slug . '-' . $counter;
-            $exist = Wine::where('slug', $slug)->first();
-            $counter++;
-        }
-        return $slug;
-    }
 }
