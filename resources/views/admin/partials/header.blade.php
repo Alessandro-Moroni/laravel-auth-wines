@@ -17,10 +17,7 @@
                         <a class="nav-link" href="{{ route('admin.wines.create') }}">New wine</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">List Flavours</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">New Flavour</a>
+                        <a class="nav-link" href="{{ route('admin.flavours.index') }}">List Flavours</a>
                     </li>
 
                 </ul>
