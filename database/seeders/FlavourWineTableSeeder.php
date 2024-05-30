@@ -14,6 +14,7 @@ class FlavourWineTableSeeder extends Seeder
      */
     public function run(): void
     {
+        // Commento di prova
         for($i = 0; $i < 1000; $i++){
             $wine = Wine::inRandomOrder()->first();
             $flavour_id = Flavour::inRandomOrder()->first()->id;
