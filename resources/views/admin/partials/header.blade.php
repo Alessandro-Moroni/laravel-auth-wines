@@ -17,10 +17,10 @@
                         <a class="nav-link" href="{{ route('admin.wines.create') }}">New wine</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">List Winery</a>
+                        <a class="nav-link" href="#">List Flavours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">New Winery</a>
+                        <a class="nav-link" href="#">New Flavour</a>
                     </li>
 
                 </ul>

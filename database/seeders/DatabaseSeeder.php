@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             WineTableSeeder::class,
+            FlavourTableSeeder::class,
+            FlavourWineTableSeeder::class,
         ]);
     }
 }
