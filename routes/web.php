@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\WinesController;
+use App\Http\Controllers\Admin\FlavoursController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('home');
         Route::resource('wines', WinesController::class);
+        Route::resource('flavours', FlavoursController::class)->except(['create', 'store', 'edit', 'update']);
     });
 
 Route::middleware('auth')->group(function () {

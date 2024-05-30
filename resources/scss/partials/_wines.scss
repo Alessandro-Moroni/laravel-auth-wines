@@ -28,3 +28,37 @@ img {
     content: '\f3c5';
     margin-right: 7px;
 }
+
+.h_70_vh{
+    height: 70vh;
+}
+
+//-----------------
+
+html {
+    scrollbar-width: thin; /* Puoi usare thin, auto o none */
+    scrollbar-color: yellow rgba(255, 0, 0, 0); /* Colore del bottone e della traccia */
+}
+
+/* Per i browser che supportano le nuove specifiche CSS */
+* {
+    scrollbar-width: thin; /* Riduce la larghezza della scrollbar */
+    scrollbar-color: yellow rgba(255, 0, 0, 0); /* Colore del bottone (primo colore) e della traccia (secondo colore) */
+}
+
+*::-webkit-scrollbar {
+    width: 12px; /* Larghezza della scrollbar */
+    height: 12px; /* Altezza della scrollbar, per le scrollbar orizzontali */
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent; /* Colore della traccia della scrollbar */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: yellow; /* Colore del bottone della scrollbar */
+    border-radius: 10px; /* Arrotondamento degli angoli del bottone */
+    border: 2px solid transparent; /* Bordo del bottone per evidenziare il contrasto */
+}
+
+//-----------------

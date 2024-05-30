@@ -14,10 +14,22 @@ class FlavourWineTableSeeder extends Seeder
      */
     public function run(): void
     {
-        // Commento di prova
-        for($i = 0; $i < 1000; $i++){
-            $wine = Wine::inRandomOrder()->first();
-            $flavour_id = Flavour::inRandomOrder()->first()->id;
+        // Array to store used combinations
+        $usedCombinations = [];
+
+        for ($i = 0; $i < 1000; $i++) {
+            do {
+                $wine = Wine::inRandomOrder()->first();
+                $flavour_id = Flavour::inRandomOrder()->first()->id;
+
+                // Generate a unique key for the combination
+                $combinationKey = $wine->id . '-' . $flavour_id;
+            } while (isset($usedCombinations[$combinationKey]));
+
+            // Store the combination as used
+            $usedCombinations[$combinationKey] = true;
+
+            // Attach flavour to wine
             $wine->flavours()->attach($flavour_id);
         }
     }

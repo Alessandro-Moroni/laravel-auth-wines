@@ -36,11 +36,14 @@
             <p>Voto: {{ $wine->rating_average }}</p>
             <p>Recensioni totali: {{ $wine->rating_reviews }}</p>
 
+                <h2>Aromi</h2>
+                <ul class="overflow-auto h_70_vh me-4">
+                    @forelse ($wine->flavours as $flavour)
+                        <li><a href="{{ route('admin.flavours.show', $flavour) }}" class="text-capitalize text-light">{{ $flavour->name }}</a></li>
+                    @empty
+                        <h4>---Nessun Aroma---</h4>
+                    @endforelse
+                </ul>
         </div>
-
-
-
-
-
     </div>
 @endsection
