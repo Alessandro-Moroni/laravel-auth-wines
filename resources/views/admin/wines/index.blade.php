@@ -54,11 +54,9 @@
             @endforeach
         </div>
     </div>
-    @if ($search == 0)
 
     <div class="container">
         {{ $wines->links('pagination::bootstrap-5') }}
     </div>
-    @endif
 
 @endsection
